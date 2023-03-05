@@ -9,4 +9,8 @@ export const Container = styled(Box)`
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;

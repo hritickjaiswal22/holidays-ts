@@ -1,10 +1,11 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+
+import { STable } from "./style";
 
 type PropType = {
   headings: Array<string>;
@@ -37,7 +38,7 @@ function TableComponent(props: PropType) {
   }));
 
   return (
-    <Table {...props}>
+    <STable {...props}>
       <TableHead>
         <TableRow>
           {props.headings.map((heading) => (
@@ -51,12 +52,12 @@ function TableComponent(props: PropType) {
             <StyledTableCell component="th" scope="row">
               {row.desc}
             </StyledTableCell>
-            <StyledTableCell align="right">{row.holiday}</StyledTableCell>
-            <StyledTableCell align="right">{row.date}</StyledTableCell>
+            <StyledTableCell align="left">{row.holiday}</StyledTableCell>
+            <StyledTableCell align="left">{row.date}</StyledTableCell>
           </StyledTableRow>
         ))}
       </TableBody>
-    </Table>
+    </STable>
   );
 }
 
