@@ -3,7 +3,7 @@ import React from "react";
 import { STypography } from "./style";
 
 type TypographyProps = {
-  variant: string;
+  variant: any;
   size: number;
   children: React.ReactNode;
 };

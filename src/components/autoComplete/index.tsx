@@ -5,8 +5,8 @@ import { countries } from "../../utils/countries";
 
 type PropType = {
   label: string;
-  onChange: (event: Event, newValue: string) => void;
-  onInputChange: (event: Event, newInputValue: string) => void;
+  onChange: (event: object, newValue: any) => void;
+  onInputChange: (event: object, newInputValue: any) => void;
   value: string;
   inputValue: string;
   options: Array<string>;
