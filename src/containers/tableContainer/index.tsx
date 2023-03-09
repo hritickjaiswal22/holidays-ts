@@ -39,19 +39,19 @@ export default function CustomizedTables(props: PropType) {
   }
 
   async function getHolidaysByYear() {
-    const response = await axios.get(
-      `https://calendarific.com/api/v2/holidays?&api_key=01aff00d5bc3c564a8deec0d89024e579d6ae36c&country=${props.country}&year=${props.year}`
+    const res = await axios.get(
+      `http://localhost:3000/holiday/country/${props.country}/year/${props.year}`
     );
 
-    return response?.data?.response?.holidays;
+    return res?.data?.holidays;
   }
 
   async function getHolidaysByYearAndMonth() {
-    const response = await axios.get(
-      `https://calendarific.com/api/v2/holidays?&api_key=01aff00d5bc3c564a8deec0d89024e579d6ae36c&country=${props.country}&year=${props.year}&month=${props.month}`
+    const res = await axios.get(
+      `http://localhost:3000/holiday/country/${props.country}/year/${props.year}/month/${props.month}`
     );
 
-    return response?.data?.response?.holidays;
+    return res?.data?.holidays;
   }
 
   useEffect(() => {
