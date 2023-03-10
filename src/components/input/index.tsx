@@ -6,6 +6,7 @@ type PropType = {
   label: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value: number;
+  type: string;
 };
 
 function Input(props: PropType) {
@@ -15,6 +16,7 @@ function Input(props: PropType) {
       value={props.value}
       label={props.label}
       onChange={props.onChange}
+      type={props.type}
     />
   );
 }
