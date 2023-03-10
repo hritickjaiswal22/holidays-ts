@@ -5,6 +5,8 @@ import { Container } from "../../components/table/style";
 import TableComponent from "../../components/table";
 import Spinner from "../../components/spinner";
 
+import { baseUrl } from "../../utils/constants";
+
 const headings = ["Description", "Holiday", "Date"];
 
 const rows = [
@@ -19,12 +21,13 @@ type PropType = {
   country: string;
   year: number;
   month: number;
+  setError: (message: string) => void;
 };
 
 type anyType = any;
 
 export default function CustomizedTables(props: PropType) {
-  const { country, month, year } = props;
+  const { country, month, year, setError } = props;
   const [holidays, setHolidays] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -40,7 +43,7 @@ export default function CustomizedTables(props: PropType) {
 
   async function getHolidaysByYear() {
     const res = await axios.get(
-      `http://localhost:3000/holiday/country/${props.country}/year/${props.year}`
+      `${baseUrl}/holiday/country/${props.country}/year/${props.year}`
     );
 
     return res?.data?.holidays;
@@ -48,7 +51,7 @@ export default function CustomizedTables(props: PropType) {
 
   async function getHolidaysByYearAndMonth() {
     const res = await axios.get(
-      `http://localhost:3000/holiday/country/${props.country}/year/${props.year}/month/${props.month}`
+      `${baseUrl}/holiday/country/${props.country}/year/${props.year}/month/${props.month}`
     );
 
     return res?.data?.holidays;
@@ -63,8 +66,7 @@ export default function CustomizedTables(props: PropType) {
         })
         .finally(() => setIsLoading(false));
       return;
-    }
-    if (country && year) {
+    } else if (country && year) {
       setIsLoading(true);
       getHolidaysByYear()
         .then((data) => {
@@ -72,7 +74,7 @@ export default function CustomizedTables(props: PropType) {
         })
         .finally(() => setIsLoading(false));
       return;
-    }
+    } else setError("Please give valid inputs");
   }, [country, month, year]);
 
   return (

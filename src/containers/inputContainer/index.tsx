@@ -67,7 +67,12 @@ function InputContainer(props: PropType) {
           inputValue={monthInputValue}
           options={months}
         />
-        <Input label="Year" value={yearValue} onChange={inputChangeHandler} />
+        <Input
+          type="number"
+          label="Year"
+          value={yearValue}
+          onChange={inputChangeHandler}
+        />
       </Container>
       <Container sx={{ justifyContent: "center" }}>
         <Button onClick={submitHandler}>Submit</Button>
